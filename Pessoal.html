@@ -1,739 +1,435 @@
-<!DOCTYPE html>
+<style>
 
-<!-- Define que o documento utiliza HTML5 -->
-<html lang="pt-BR">
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f4f6f8;
+    }
 
-<head>
+    header {
+        background-color: #111318;
+        color: #fff;
+        padding: 1.5rem 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,.4);
+    }
 
-    <!-- Permite utilizar caracteres como ç, ã, é, etc. -->
-    <meta charset="UTF-8">
+    .logo {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto 10px;
+    }
 
-    <!-- Faz o site se adaptar a celulares, tablets e computadores -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    header h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
 
-    <!-- Nome que aparece na aba do navegador -->
-    <title>Atlas | Soluções em IA para o seu Negócio</title>
+    nav {
+        margin-top: 15px;
+    }
 
+    nav a {
+        color: #2979ff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: .3s;
+    }
 
-    <!-- =====================================================
-         CSS - PARTE VISUAL DO SITE
-         ===================================================== -->
+    nav a:hover {
+        color: #00a8ff;
+    }
 
-    <style>
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 20px;
+    }
 
-        /* Configurações gerais da página */
-        body, html{
-            margin:0;
-            padding:0;
-            font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-            line-height:1.6;
-            color:#333;
-            background-color:#f4f6f8;
+    section {
+        background: #fff;
+        padding: 40px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,.08);
+        scroll-margin-top: 100px;
+    }
+
+    h2 {
+        color: #111318;
+        border-bottom: 3px solid #2979ff;
+        padding-bottom: 10px;
+        margin-top: 0;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(
+            135deg,
+            #111318,
+            #1a1f2b,
+            #123b80
+        );
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    }
+
+    .hero h2 {
+        color: #2979ff;
+        border: none;
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 750px;
+        margin: auto;
+        color: #e0e0e0;
+    }
+
+    .features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .feature-card {
+        flex: 1 1 calc(50% - 20px);
+        background: #f4f6f8;
+        padding: 25px;
+        border-radius: 8px;
+        border-left: 5px solid #2979ff;
+        box-shadow: 0 2px 8px rgba(0,0,0,.08);
+        transition: .3s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(41,121,255,.18);
+    }
+
+    .feature-card h3 {
+        margin-top: 0;
+        color: #111318;
+    }
+
+    .contact-info {
+        font-size: 1.2rem;
+        background: #eaf2ff;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #c7dcff;
+    }
+
+    .contact-info strong {
+        color: #111318;
+    }
+
+    .contact-info a {
+        color: #2979ff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    footer {
+        background: #111318;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    footer h3 {
+        color: #2979ff;
+        font-size: 1.5rem;
+    }
+
+    .team {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        margin-top: 25px;
+    }
+
+    .team-member {
+        width: 220px;
+        background: rgba(255,255,255,.06);
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid rgba(41,121,255,.25);
+        transition: .3s;
+    }
+
+    .team-member:hover {
+        transform: translateY(-5px);
+        border-color: #2979ff;
+        box-shadow: 0 5px 20px rgba(41,121,255,.15);
+    }
+
+    .team-member img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #2979ff;
+        margin-bottom: 15px;
+    }
+
+    .team-member p {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    /* CARGOS DA EQUIPE */
+
+    .team-member span {
+        display: block;
+        margin-top: 8px;
+        color: #2979ff;
+        font-size: 0.9rem;
+        font-weight: normal;
+    }
+
+    .copyright {
+        margin-top: 30px;
+        color: #aaa;
+    }
+
+    @media(max-width:768px) {
+
+        .feature-card {
+            flex: 1 1 100%;
         }
 
-
-        /* =====================================================
-           CABEÇALHO
-           ===================================================== */
-
-        /* Área superior onde ficam logo, nome e menu */
-        header{
-            background-color:#111318;
-            color:#fff;
-            padding:1.5rem 0;
-            text-align:center;
-
-            /* Mantém o cabeçalho fixo no topo quando rolar a página */
-            position:sticky;
-            top:0;
-
-            /* Faz o cabeçalho ficar acima dos outros elementos */
-            z-index:1000;
-
-            /* Sombra abaixo do cabeçalho */
-            box-shadow:0 2px 10px rgba(0,0,0,.4);
+        .team-member {
+            width: 90%;
         }
 
-
-        /* =====================================================
-           LOGO
-           ===================================================== */
-
-        /* Configura o tamanho e posicionamento da logo */
-        .logo{
-            width:90px;
-            height:90px;
-
-            /* Evita que a imagem fique deformada */
-            object-fit:contain;
-
-            /* Coloca a imagem em uma linha própria */
-            display:block;
-
-            /* Centraliza a logo e cria espaço abaixo dela */
-            margin:0 auto 10px;
+        nav a {
+            display: inline-block;
+            margin: 5px 10px;
         }
 
-
-        /* Nome ATLAS */
-        header h1{
-            margin:0;
-            font-size:2.2rem;
-            letter-spacing:2px;
-            text-transform:uppercase;
+        .logo {
+            width: 75px;
+            height: 75px;
         }
 
+    }
 
-        /* =====================================================
-           MENU DE NAVEGAÇÃO
-           ===================================================== */
+</style>
 
-        /* Espaçamento entre o nome e o menu */
-        nav{
-            margin-top:15px;
-        }
 
+<header>
 
-        /* Estilo dos links do menu */
-        nav a{
-            color:#2979ff;
-            text-decoration:none;
-            margin:0 15px;
-            font-weight:bold;
-            font-size:1.1rem;
-            transition:.3s;
-        }
+    <img src="imagens/logo.png" alt="Logo Atlas" class="logo">
 
+    <h1>Atlas</h1>
 
-        /* Quando passar o mouse sobre um link */
-        nav a:hover{
-            color:#00a8ff;
-        }
+    <nav>
+        <a href="#home">Início</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#objetivos">Nossos Objetivos</a>
+        <a href="#contato">Contato</a>
+    </nav>
 
+</header>
 
-        /* =====================================================
-           CONTAINER PRINCIPAL
-           ===================================================== */
 
-        /* Define a largura máxima do conteúdo */
-        .container{
-            max-width:1100px;
+<div class="container">
 
-            /* Centraliza o conteúdo */
-            margin:auto;
+    <div id="home" class="hero">
 
-            /* Espaçamento interno */
-            padding:20px;
-        }
+        <h2>O futuro da gestão inteligente</h2>
 
+        <p>
+            Automatize, organize e transforme o seu negócio
+            com tecnologia de ponta desenvolvida especialmente
+            para você.
+        </p>
 
-        /* =====================================================
-           SEÇÕES
-           ===================================================== */
+    </div>
 
-        /* Estilo geral das caixas de conteúdo */
-        section{
-            background:#fff;
-            padding:40px;
-            margin-bottom:30px;
-            border-radius:10px;
 
-            /* Pequena sombra */
-            box-shadow:0 4px 15px rgba(0,0,0,.08);
+    <section id="sobre">
 
-            /* Evita que o menu cubra a seção ao clicar */
-            scroll-margin-top:100px;
-        }
+        <h2>Nossa História e Missão</h2>
 
+        <p>
+            O <strong>Atlas</strong> nasceu da necessidade
+            de modernizar e facilitar a gestão do comércio local.
+        </p>
 
-        /* Títulos das seções */
-        h2{
-            color:#111318;
-            border-bottom:3px solid #2979ff;
-            padding-bottom:10px;
-            margin-top:0;
-        }
+        <p>
+            Somos uma fábrica de software apaixonada por tecnologia,
+            com foco em grandes e pequenas empresas.
+        </p>
 
+    </section>
 
-        /* =====================================================
-           ÁREA PRINCIPAL / HERO
-           ===================================================== */
 
-        /* Primeira área de destaque do site */
-        .hero{
-            text-align:center;
-            padding:60px 20px;
+    <section id="objetivos">
 
-            /* Gradiente grafite + azul elétrico */
-            background:linear-gradient(
-                135deg,
-                #111318,
-                #1a1f2b,
-                #123b80
-            );
+        <h2>O que nosso Agente Inteligente faz?</h2>
 
-            color:white;
-            border-radius:10px;
-            margin-bottom:30px;
+        <div class="features">
 
-            /* Sombra */
-            box-shadow:0 4px 20px rgba(0,0,0,.25);
-        }
+            <div class="feature-card">
 
+                <h3>📦 Organização de Estoque</h3>
 
-        /* Título dentro do Hero */
-        .hero h2{
-            color:#2979ff;
-            border:none;
-            font-size:2.5rem;
-        }
+                <p>
+                    Controle total dos produtos.
+                </p>
 
+            </div>
 
-        /* Texto dentro do Hero */
-        .hero p{
-            font-size:1.2rem;
-            max-width:750px;
 
-            /* Centraliza o texto */
-            margin:auto;
+            <div class="feature-card">
 
-            color:#e0e0e0;
-        }
+                <h3>💾 Histórico de Compras</h3>
 
+                <p>
+                    Armazene e consulte compras antigas.
+                </p>
 
-        /* =====================================================
-           CARDS DE FUNCIONALIDADES
-           ===================================================== */
+            </div>
 
-        /* Organiza os cards lado a lado */
-        .features{
-            display:flex;
 
-            /* Permite quebrar linha quando não houver espaço */
-            flex-wrap:wrap;
+            <div class="feature-card">
 
-            gap:20px;
-            margin-top:30px;
-        }
+                <h3>⚠️ Alertas Inteligentes</h3>
 
+                <p>
+                    Receba avisos automáticos de estoque baixo.
+                </p>
 
-        /* Cada card individual */
-        .feature-card{
-            flex:1 1 calc(50% - 20px);
-            background:#f4f6f8;
-            padding:25px;
-            border-radius:8px;
+            </div>
 
-            /* Linha azul elétrico na esquerda */
-            border-left:5px solid #2979ff;
 
-            box-shadow:0 2px 8px rgba(0,0,0,.08);
+            <div class="feature-card">
 
-            /* Deixa a animação mais suave */
-            transition:.3s;
-        }
+                <h3>📊 Análise de Vendas</h3>
 
+                <p>
+                    Descubra seus produtos mais vendidos.
+                </p>
 
-        /* Efeito quando passar o mouse no card */
-        .feature-card:hover{
-            transform:translateY(-5px);
+            </div>
 
-            /* Pequeno brilho azul */
-            box-shadow:0 8px 20px rgba(41,121,255,.18);
-        }
+        </div>
 
+    </section>
 
-        /* Títulos dos cards */
-        .feature-card h3{
-            margin-top:0;
-            color:#111318;
-        }
 
+    <section id="contato">
 
-        /* =====================================================
-           CONTATO
-           ===================================================== */
+        <h2>Entre em Contato</h2>
 
-        /* Caixa onde ficam email e WhatsApp */
-        .contact-info{
-            font-size:1.2rem;
-            background:#eaf2ff;
-            padding:20px;
-            border-radius:8px;
-            text-align:center;
+        <div class="contact-info">
 
-            /* Detalhe azul */
-            border:1px solid #c7dcff;
-        }
-
-
-        /* Texto em negrito dentro do contato */
-        .contact-info strong{
-            color:#111318;
-        }
-
-
-        /* Links do contato */
-        .contact-info a{
-            color:#2979ff;
-            text-decoration:none;
-            font-weight:bold;
-        }
-
-
-        /* =====================================================
-           RODAPÉ
-           ===================================================== */
-
-        /* Parte inferior do site */
-        footer{
-            background:#111318;
-            color:white;
-            text-align:center;
-            padding:40px 20px;
-        }
-
-
-        /* Título do rodapé */
-        footer h3{
-            color:#2979ff;
-            font-size:1.5rem;
-        }
-
-
-        /* =====================================================
-           EQUIPE
-           ===================================================== */
-
-        /* Organiza os integrantes da equipe */
-        .team{
-            display:flex;
-            justify-content:center;
-            flex-wrap:wrap;
-            gap:25px;
-            margin-top:25px;
-        }
-
-
-        /* Card de cada integrante */
-        .team-member{
-            width:220px;
-            background:rgba(255,255,255,.06);
-            padding:20px;
-            border-radius:12px;
-
-            /* Borda transparente */
-            border:1px solid rgba(41,121,255,.25);
-
-            transition:.3s;
-        }
-
-
-        /* Efeito ao passar o mouse */
-        .team-member:hover{
-            transform:translateY(-5px);
-
-            /* Brilho azul */
-            border-color:#2979ff;
-            box-shadow:0 5px 20px rgba(41,121,255,.15);
-        }
-
-
-        /* Foto dos integrantes */
-        .team-member img{
-            width:140px;
-            height:140px;
-
-            /* Deixa a imagem redonda */
-            border-radius:50%;
-
-            /* Mantém a imagem proporcional */
-            object-fit:cover;
-
-            border:3px solid #2979ff;
-            margin-bottom:15px;
-        }
-
-
-        /* Nome dos integrantes */
-        .team-member p{
-            margin:0;
-            font-size:1rem;
-            font-weight:bold;
-        }
-
-
-        /* Copyright */
-        .copyright{
-            margin-top:30px;
-            color:#aaa;
-        }
-
-
-        /* =====================================================
-           RESPONSIVIDADE
-           ===================================================== */
-
-        /* Essas regras são aplicadas em telas menores,
-           como celulares e tablets */
-        @media(max-width:768px){
-
-            /* Os cards passam a ocupar toda a largura */
-            .feature-card{
-                flex:1 1 100%;
-            }
-
-
-            /* O card da equipe fica maior no celular */
-            .team-member{
-                width:90%;
-            }
-
-
-            /* Ajusta o menu para telas pequenas */
-            nav a{
-                display:inline-block;
-                margin:5px 10px;
-            }
-
-
-            /* Diminui a logo no celular */
-            .logo{
-                width:75px;
-                height:75px;
-            }
-
-        }
-
-    </style>
-
-</head>
-
-
-<body>
-
-
-    <!-- =====================================================
-         CABEÇALHO DO SITE
-         ===================================================== -->
-
-    <header>
-
-        <!--
-            Logo do Atlas.
-
-            A imagem precisa estar dentro da pasta "imagens"
-            e ter o nome "logo.png".
-
-            Estrutura:
-            imagens/logo.png
-        -->
-        <img src="imagens/logo.png" alt="Logo Atlas" class="logo">
-
-
-        <!-- Nome da empresa -->
-        <h1>Atlas</h1>
-
-
-        <!-- =================================================
-             MENU
-             ================================================= -->
-
-        <nav>
-
-            <!-- Leva para a seção inicial -->
-            <a href="#home">Início</a>
-
-            <!-- Leva para a seção Sobre Nós -->
-            <a href="#sobre">Sobre Nós</a>
-
-            <!-- Leva para a seção Objetivos -->
-            <a href="#objetivos">Nossos Objetivos</a>
-
-            <!-- Leva para a seção Contato -->
-            <a href="#contato">Contato</a>
-
-        </nav>
-
-    </header>
-
-
-    <!-- =====================================================
-         CONTEÚDO PRINCIPAL
-         ===================================================== -->
-
-    <div class="container">
-
-
-        <!-- =================================================
-             HOME
-             ================================================= -->
-
-        <div id="home" class="hero">
-
-            <!-- Título principal -->
-            <h2>O futuro da gestão inteligente</h2>
-
-
-            <!-- Descrição principal -->
             <p>
-                Automatize, organize e transforme o seu negócio
-                com tecnologia de ponta desenvolvida especialmente
-                para você.
+                <strong>E-mail:</strong>
+                atlas01empresa@gmail.com
+            </p>
+
+            <p>
+                <strong>WhatsApp:</strong>
+                (81) 99385-9905
             </p>
 
         </div>
 
+    </section>
 
-        <!-- =================================================
-             SOBRE A EMPRESA
-             ================================================= -->
-
-        <section id="sobre">
-
-            <!-- Título da seção -->
-            <h2>Nossa História e Missão</h2>
+</div>
 
 
-            <!-- Primeiro parágrafo -->
-            <p>
-                O <strong>Atlas</strong> nasceu da necessidade
-                de modernizar e facilitar a gestão do comércio local.
-            </p>
+<footer>
+
+    <h3>Equipe Fundadora</h3>
+
+    <div class="team">
 
 
-            <!-- Segundo parágrafo -->
-            <p>
-                Somos uma fábrica de software apaixonada por tecnologia,
-                com foco em grandes e pequenas empresas.
-            </p>
+        <div class="team-member">
 
-        </section>
+            <img src="imagens/arthur.png" alt="Arthur">
 
+            <p>Arthur Pereira Silva</p>
 
-        <!-- =================================================
-             OBJETIVOS / FUNCIONALIDADES
-             ================================================= -->
+            <span>Gerente de Projetos</span>
 
-        <section id="objetivos">
-
-            <!-- Título -->
-            <h2>O que nosso Agente Inteligente faz?</h2>
+        </div>
 
 
-            <!-- Área que contém os cards -->
-            <div class="features">
+        <div class="team-member">
+
+            <img src="imagens/luann.png" alt="Luann">
+
+            <p>Luann Vitor Azevedo</p>
+
+            <span>Analista de Documentação</span>
+
+        </div>
 
 
-                <!-- CARD 1 -->
+        <div class="team-member">
 
-                <div class="feature-card">
+            <img src="imagens/vittor.png" alt="Vittor">
 
-                    <!-- Título do card -->
-                    <h3>📦 Organização de Estoque</h3>
+            <p>Vittor Gabriel Tomás</p>
 
-                    <!-- Descrição -->
-                    <p>
-                        Controle total dos produtos.
-                    </p>
+            <span>Desenvolvedor de Software</span>
 
-                </div>
+        </div>
 
 
-                <!-- CARD 2 -->
+        <div class="team-member">
 
-                <div class="feature-card">
+            <img src="imagens/eduardo.png" alt="Eduardo">
 
-                    <h3>💾 Histórico de Compras</h3>
+            <p>Eduardo Saulo Borges</p>
 
-                    <p>
-                        Armazene e consulte compras antigas.
-                    </p>
-
-                </div>
+        </div>
 
 
-                <!-- CARD 3 -->
+        <div class="team-member">
 
-                <div class="feature-card">
+            <img src="imagens/edvaldo.png" alt="Edvaldo">
 
-                    <h3>⚠️ Alertas Inteligentes</h3>
+            <p>Edvaldo Silva</p>
 
-                    <p>
-                        Receba avisos automáticos de estoque baixo.
-                    </p>
+            <span>Analista de Produto</span>
 
-                </div>
-
-
-                <!-- CARD 4 -->
-
-                <div class="feature-card">
-
-                    <h3>📊 Análise de Vendas</h3>
-
-                    <p>
-                        Descubra seus produtos mais vendidos.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             CONTATO
-             ================================================= -->
-
-        <section id="contato">
-
-            <!-- Título -->
-            <h2>Entre em Contato</h2>
-
-
-            <!-- Caixa de informações -->
-            <div class="contact-info">
-
-
-                <!-- Email -->
-                <p>
-
-                    <strong>E-mail:</strong>
-
-                    atlas01empresa@gmail.com
-
-                </p>
-
-
-                <!-- WhatsApp -->
-                <p>
-
-                    <strong>WhatsApp:</strong>
-
-                    (81) 99385-9905
-
-                </p>
-
-
-            </div>
-
-        </section>
+        </div>
 
 
     </div>
 
 
-    <!-- =====================================================
-         RODAPÉ
-         ===================================================== -->
+    <div class="copyright">
 
-    <footer>
+        © 2026 Atlas. Todos os direitos reservados.
 
-        <!-- Título -->
-        <h3>Equipe Fundadora</h3>
+    </div>
 
-
-        <!-- Área da equipe -->
-        <div class="team">
-
-
-            <!-- =================================================
-                 ARTHUR
-                 ================================================= -->
-
-            <div class="team-member">
-
-                <!--
-                    Foto do Arthur.
-
-                    Arquivo:
-                    imagens/arthur.png
-                -->
-                <img src="imagens/arthur.png" alt="Arthur">
-
-
-                <!-- Nome -->
-                <p>
-                    Arthur Pereira Silva
-                </p>
-
-            </div>
-
-
-            <!-- =================================================
-                 LUANN
-                 ================================================= -->
-
-            <div class="team-member">
-
-                <!-- Foto do Luann -->
-                <img src="imagens/luann.png" alt="Luann">
-
-
-                <!-- Nome -->
-                <p>
-                    Luann Vitor Azevedo
-                </p>
-
-            </div>
-
-
-            <!-- =================================================
-                 VITTOR
-                 ================================================= -->
-
-            <div class="team-member">
-
-                <!-- Foto do Vittor -->
-                <img src="imagens/vittor.png" alt="Vittor">
-
-
-                <!-- Nome -->
-                <p>
-                    Vittor Gabriel Tomás
-                </p>
-
-            </div>
-
-
-            <!-- =================================================
-                 EDUARDO
-                 ================================================= -->
-
-            <div class="team-member">
-
-                <!-- Foto do Eduardo -->
-                <img src="imagens/eduardo.png" alt="Eduardo">
-
-
-                <!-- Nome -->
-                <p>
-                    Eduardo Saulo Borges
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- =================================================
-             COPYRIGHT
-             ================================================= -->
-
-        <div class="copyright">
-
-            © 2026 Atlas. Todos os direitos reservados.
-
-        </div>
-
-
-    </footer>
-
-
-</body>
-
-</html>
+</footer>
